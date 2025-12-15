@@ -73,7 +73,7 @@ func method_0x434C49434B() error {
 			return fmt.Errorf("invalid", line)
 		}
 
-		position, hits := applyRotation(position, dir, distance)
+		_, hits := applyRotation(position, dir, distance)
 		totalZeros += hits
 
 	}
