@@ -7,6 +7,24 @@ import (
 )
 
 func main() {
+	//part I:
+	part_one()
+
+	//part II:
+
+	if err := method_0x434C49434B(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+
+
+
+//run functionsfunc
+
+func part_one() error {
+
 	scanner := bufio.NewScanner(os.Stdin)
 	
 	position := 50
@@ -24,7 +42,7 @@ func main() {
 
 		if err != nil {
 			fmt.Println("invalid rotation:", line)
-			return
+			return err
 		}
 
 		if dir == 'L' {
@@ -36,7 +54,7 @@ func main() {
 			position = (position + distance) % 100
 		}else {
 			fmt.Println("Invalid Direction:", line)
-			return
+			return err
 		}
 
 		if position == 0 {
@@ -45,14 +63,11 @@ func main() {
 	}
 
 	fmt.Println("The real code is:", zeroCount)
-
-	//part II:
-
-	if err := method_0x434C49434B(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
+	return nil
 }
+
+
+
 
 func method_0x434C49434B() error {
 
@@ -72,8 +87,9 @@ func method_0x434C49434B() error {
 		if err != nil {
 			return fmt.Errorf("invalid", line)
 		}
-
-		_, hits := applyRotation(position, dir, distance)
+		
+		var hits int
+		position, hits = applyRotation(position, dir, distance)
 		totalZeros += hits
 
 	}
