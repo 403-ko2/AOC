@@ -8,7 +8,7 @@ import (
 
 func main() {
 	//part I:
-	part_one()
+//	part_one()
 
 	//part II:
 
@@ -75,6 +75,7 @@ func method_0x434C49434B() error {
 	
 	position := 50
 	totalZeros := 0
+	var hits int
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -88,7 +89,6 @@ func method_0x434C49434B() error {
 			return fmt.Errorf("invalid", line)
 		}
 		
-		var hits int
 		position, hits = applyRotation(position, dir, distance)
 		totalZeros += hits
 
@@ -119,7 +119,7 @@ func applyRotation(position int, dir byte, distance int) (int, int) {
 				position = 0
 			}
 		default:
-			panic("invalid direction")
+			return position, zeroCount
 		}
 
 		if position == 0 {
